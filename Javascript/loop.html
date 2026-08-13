@@ -8,23 +8,39 @@
 <body>
     <p id="output"></p>
     <script>
-        //code for (For loop)
-        for (let i = 1; i <= 5; i++) {
-            document.write("<br> abes college");
-        }
+        // //code for (For loop)
+        // for (let i = 1; i <= 5; i++) {
+        //     document.write("<br> abes college");
+        // }
 
-        //Assignment 1
-        const car = ["BMW", "Volvo", "Saab", "Ford"];
-        let text = " ";
-        for (let i = 0; i < car.length; i++) {
-            text += "<br>" + car[i];
-        }
-        document.getElementById("output").innerHTML = text;
+        // //Assignment 1
+        // const car = ["BMW", "Volvo", "Saab", "Ford"];
+        // let text = " ";
+        // for (let i = 0; i < car.length; i++) {
+        //     text += "<br>" + car[i];
+        // }
+        // document.getElementById("output").innerHTML = text;
 
-        //Assignment 2
-        const car1 = ["Car1", "Car2", "Car3"];
-        for(let j=0; j<car1.length; j=j+2){
-            document.write("<br>" + car1[j]);
+        // //Assignment 2
+        // const car1 = ["Car1", "Car2", "Car3"];
+        // for(let j=0; j<car1.length; j=j+2){
+        //     document.write("<br>" + car1[j]);
+        // }
+
+        // //code for (While loop)
+        // let n=1;
+        // while(n<=5){
+        //     document.write("<br> hello");
+        //     n++;
+        // }
+
+        //Assignment
+        let num = prompt("Enter the number:");
+        let i = 1;
+        while(i <= 10) {
+            let result = num * i;
+            document.write("<br>" + num + " x " + i + " = " + result);
+            i++;
         }
     </script>
 </body>
