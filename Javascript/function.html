@@ -10,7 +10,6 @@
         // function abes(){
         //     document.write("<br> hi we are coders!");
         // }
-
         // abes();
         // abes();
         // abes();
@@ -18,12 +17,36 @@
         // function add(a,b){
         //     return a+b;
         // }
-
         // document.write("<br> The sum is: " + add(10,20));
         // document.write("<br> The sum is: " + add(30,29));
 
-        const abes = () => "hello";
-        document.write("<br> " + abes());
-    </script>
+        // const abes = () => "hello";
+        // document.write("<br> " + abes());
+
+        //Name, cost and capacity of a product by using arrow function
+        let n = prompt("Enter 1. car 2. helicopter 3. aeroplane: ");
+        if(n==1){
+            const car = () => {
+                return "Name: Car, Cost: 20000$, Capacity: 5";
+            };
+            document.write("<br> " + car());
+        }
+        else if(n==2){
+            const helicopter = () => {
+                return "Name: Helicopter, Cost: 500000$, Capacity: 4";
+            };
+            document.write("<br> " + helicopter());
+        }
+        else if(n==3){
+            const aeroplane = () => {
+                return "Name: Aeroplane, Cost: 1000000$, Capacity: 150";
+            };
+            document.write("<br> " + aeroplane());
+        }
+        else{
+            document.write("<br> Invalid input");
+        }   
+
+</script>
 </body>
 </html>
