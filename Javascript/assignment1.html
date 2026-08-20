@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopkeeper's Menu</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+        .menu-item { border: 1px solid #ccc; padding: 10px; }
+        .qty-input { width: 50px; padding: 4px; }
+        .summary-item { display: flex; justify-content: space-between; padding: 5px 0; }
+        .buttons { margin-top: 15px; }
+        button { margin-right: 5px; padding: 8px 15px; }
+    </style>
+</head>
+<body>
+    <h1>Shopkeeper's Store</h1>
+    <h2>Available Items</h2>
+    <div class="menu-grid" id="menuGrid"></div>
+    <h2>Your Order</h2>
+    <div id="summaryList">No items selected</div>
+    <div>Total: <span id="totalCost">₹0</span></div>
+    <div class="buttons">
+        <button onclick="calculate()">Place Order</button>
+        <button onclick="reset()">Clear</button>
+        <button onclick="cancelOrder()">Cancel Order</button>
+        <button onclick="showOrders()">Show Orders</button>
+    </div>
+
+    <script>
+        const menu = {
+            "1": { name: "Tea", price: 450 },
+            "2": { name: "Coffee", price: 600 },
+            "3": { name: "Sugar", price: 700 },
+            "4": { name: "Bread", price: 50 },
+            "5": { name: "Pulses", price: 100 }
+        };
+
+        function init() {
+            let html = '';
+            for (let id in menu) {
+                html += `<div class="menu-item">
+                    ${menu[id].name} - ₹${menu[id].price}
+                    <input type="number" id="qty-${id}" class="qty-input" min="0" value="0">
+                </div>`;
+            }
+            document.getElementById('menuGrid').innerHTML = html;
+        }
+
+        function calculate() {
+            let total = 0, html = '';
+            for (let id in menu) {
+                let qty = parseInt(document.getElementById(`qty-${id}`).value) || 0;
+                if (qty > 0) {
+                    html += `<div class="summary-item">${menu[id].name} × ${qty}: ₹${menu[id].price * qty}</div>`;
+                    total += menu[id].price * qty;
+                }
+            }
+            document.getElementById('summaryList').innerHTML = html || 'No items selected';
+            document.getElementById('totalCost').textContent = total;
+            if (html) alert('Order placed! Total: ₹' + total);
+            else alert('Select items!');
+        }
+
+        function reset() {
+            for (let id in menu) document.getElementById(`qty-${id}`).value = 0;
+            document.getElementById('summaryList').innerHTML = 'No items selected';
+            document.getElementById('totalCost').textContent = '0';
+        }
+
+        init();
+        //cancel order functionality
+        function cancelOrder() {
+            if (confirm("Are you sure you want to cancel the order?")) {
+                reset();
+                alert("Order cancelled.");
+            }
+        }
+
+        //show all the orders placed even if it's clear using button
+        function showOrders() {
+            let orders = [];
+            for (let id in menu) {
+                let qty = parseInt(document.getElementById(`qty-${id}`).value) || 0;
+                if (qty > 0) {
+                    orders.push(`${menu[id].name} × ${qty}: ₹${menu[id].price * qty}`);
+                }
+            }
+            if (orders.length > 0) {
+                alert("Current Orders:\n" + orders.join("\n"));
+            } else {
+                alert("No current orders.");
+            }
+        }
+
+    </script>
+</body>
+</html>
