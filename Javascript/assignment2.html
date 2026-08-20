@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const students = [
+            { name: "aanya", class: "btech", rollno: 1, fees: 100000 },
+            { name: "aman", class: "mca", rollno: 2, fees: 80000 },
+            { name: "daksh", class: "btech", rollno: 3, fees: 100000 },
+            { name: "arshad", class: "mca", rollno: 4, fees: 80000 },
+            { name: "affan", class: "10th", rollno: 5, fees: 50000 }
+        ];
+
+        const className = prompt("Enter the class name: ");
+        const filteredStudents = students.filter(student => student.class === className);
+
+        filteredStudents.forEach(student => {
+            document.write(`<br>Name: ${student.name}, Roll No: ${student.rollno}, Fees: ${student.fees}`);
+        });
+
+        if (filteredStudents.length === 0) {
+            alert("Invalid class");
+        }
+    </script>
+</body>
+</html>
