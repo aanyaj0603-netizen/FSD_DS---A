@@ -1,9 +1,9 @@
 function checkLogin(username, password, callback) {
     setTimeout(() => {
-        const mockAdminUser = "admin";
-        const mockAdminPass = "secret123";
+        const User = "admin";
+        const Pass = "secret123";
 
-        if (username === mockAdminUser && password === mockAdminPass) {
+        if (username === User && password === Pass) {
             callback(null, { username: username, role: "admin" });
         } else {
             callback("Invalid username or password", null);
